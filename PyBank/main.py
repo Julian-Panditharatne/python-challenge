@@ -25,4 +25,18 @@ Average_Change = sum(changes_in_profit_losses) / total_months # Calculate the av
 max_profits = max(profit_losses) # Calculate the greatest increase/decrease in profits amounts
 min_losses = min(profit_losses)
 max_prof_date = budget[max_profits] # Get the greatest increase/decrease in profits dates.
-min_loss_date = budget[min_losses] 
+min_loss_date = budget[min_losses]
+
+results = []
+results.append("Financial Analysis\n----------------------------\n")
+results.append(f"Total Months: {total_months}\n")
+results.append(f"Total: ${Profits_N_Losses}\n")
+results.append(f"Average Change: ${Average_Change}\n")
+results.append(f"Greatest Increase in Profits: {max_prof_date} (${max_profits})\n")
+results.append(f"Greatest Decrease in Profits: {min_loss_date} (${min_losses})\n")
+
+for line in results:
+	print(line)
+
+with open(os.path.join('analysis', 'results.txt'), "w") as wtxt:
+	wtxt.writelines(results)
