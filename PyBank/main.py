@@ -30,6 +30,7 @@ min_losses = min(profit_losses)
 max_prof_date = budget[max_profits] # Get the greatest increase/decrease in profits dates.
 min_loss_date = budget[min_losses]
 
+# Store the output in a list that will then get printed on the terminal and then written to a text file.
 results = []
 results.append("Financial Analysis\n----------------------------\n")
 results.append(f"Total Months: {total_months}\n")
