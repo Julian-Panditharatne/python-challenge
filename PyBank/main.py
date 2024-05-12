@@ -1,7 +1,16 @@
+"""
+NOTE
+Besides the curriculum content from support staff, e.g., Instructor, TA, Learning Assistant, etc., 
+most of the code was created after looking through the library and the Tutorial sections of Python 3.12.3 documentation.
+
+The exact sections that were consulted along with other outside sources are provided in the References Section of the README.md file
+in the repository.
+"""
+
 import os
 import csv
 
-# Set up relative Paths; code sourced from colleague Thet Win on 02-ask-the-class channel of Slack.
+# Set up relative Paths; NOTE: code sourced from colleague Thet Win on 02-ask-the-class channel of Slack.
 cwd = os.path.abspath(__file__)
 dir_name=os.path.dirname(cwd)
 budget_csv = os.path.join(dir_name, 'Resources', 'budget_data.csv') # Path to collect data from the Resources folder.
@@ -30,8 +39,7 @@ max_prof_date = budget[max_profits] # Get the greatest increase/decrease in prof
 min_loss_date = budget[min_losses]
 
 # Store the output in a list that will then get printed on the terminal and then written to a text file.
-results = []
-results.append("Financial Analysis\n----------------------------\n")
+results = ["Financial Analysis\n----------------------------\n"]
 results.append(f"Total Months: {total_months}\n")
 results.append(f"Total: ${Profits_N_Losses}\n")
 results.append(f"Average Change: ${Average_Change}\n")
