@@ -13,9 +13,8 @@ def make_dict():
 	# Read in the CSV file
 	with open(budget_csv, "r") as csvfile:
 		csvreader = csv.reader(csvfile, delimiter=',') # Split the data on commas.
-		next(csvreader) #Skip the header row.
+		header = next(csvreader) #Skip the header row.
 		budg_dict = {int(row[1]): row[0] for row in csvreader} # Add all the CSV file data into this dictionary whose keys are "Profit/Losses"-values and values are "Date"-values.
-
 	return budg_dict
 
 budget = make_dict() # Call the function to get the dictionary version of the financial dataset.
@@ -39,8 +38,6 @@ results.append(f"Average Change: ${Average_Change}\n")
 results.append(f"Greatest Increase in Profits: {max_prof_date} (${max_profits})\n")
 results.append(f"Greatest Decrease in Profits: {min_loss_date} (${min_losses})\n")
 
-for line in results:
-	print(line)
-
 with open(results_txt, "w") as wtxt:
+	[print(line) for line in results]
 	wtxt.writelines(results)

@@ -16,7 +16,7 @@ def get_votes_dict():
 	# Read in the CSV file
 	with open(election_data_csv, "r") as elections:
 		ElectionData = csv.reader(elections, delimiter=',') # Split the data on commas.
-		next(ElectionData) # Skip the header row.
+		header = next(ElectionData) # Skip the header row.
 		votes = [row[2] for row in ElectionData] # Get a copy of the "Candidate" column in election_data.csv, without the header, in order to count the total votes cast and the total votes each candidate won.
 		candidates = {row for row in votes} # Get a set of all the candidates who received votes from the votes list.
 		vote_results = {candidate: votes.count(candidate) for candidate in sorted(candidates)} # The dictionary now has each candidate as a key and its associated value as the total votes the candidate won.
@@ -36,8 +36,6 @@ for candidate, vote_count in Vote_Results.items():
 	results.append(f"{candidate}: {round(((vote_count/Total)*100),3)}% ({vote_count})\n")
 results.append(f"-------------------------\nWinner: {Winner}\n-------------------------\n")
 
-for line in results:
-	print(line)
-
 with open(results_txt, "w") as wtxt:
+	[print(line) for line in results]
 	wtxt.writelines(results)
